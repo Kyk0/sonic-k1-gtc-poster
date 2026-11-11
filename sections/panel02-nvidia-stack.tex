@@ -1,7 +1,7 @@
 % ---------- 02  what we did (text), SONIC network schema, NVIDIA tech aside (column B, full height: y 372-1560) ----------
 \PanelHead{\ColB}{\RowA}{02}{What we built: SONIC on the K1}
 \Par{1077.33}{460}{941.33}{24}{33}{ink}{SONIC is one network that tracks any reference motion. We kept its design, PPO settings, motion sampling and rewards, trained both encoders from scratch on K1 motion, and added a head-joint reward.\par\vspace{12bp}
-We retargeted \nClipsAll\ Bones-SEED human clips to the K1 with UMR and kept the \nClipsFeasible\ that the robot can physically perform, training on \nClipsTrain\ and holding out \nClipsHeld\ for testing. \nEnvs\ simulated K1s then learn in parallel in Isaac Lab with GPU PhysX, all on one NVIDIA H100. A short post-training on one RTX PRO 6000 adds the robot’s real torque limits and a random delay, and the final policy is exported to ONNX and runs onboard the K1 at 50\,Hz. Simulation and training run end to end on the NVIDIA stack.}
+We retargeted \nClipsAll\ Bones-SEED human clips to the K1 with UMR and kept the \nClipsFeasible\ that the robot can physically perform, training on part of them and holding out \nClipsHeld\ for testing. \nEnvs\ simulated K1s then learn in parallel in Isaac Lab with GPU PhysX, all on one NVIDIA H100. A short post-training on one RTX PRO 6000 adds the robot’s real torque limits and a random delay, and the final policy is exported to ONNX and runs onboard the K1 at 50\,Hz. Simulation and training run end to end on the NVIDIA stack.}
 % ----- network schema (x 1077.33-1697.33) -----
 \T{1077.33}{826}{27}{ink}{\bfseries The SONIC network on the K1}
 % \ABox{x}{y}{w}{h}{fill}{edge}{title}
