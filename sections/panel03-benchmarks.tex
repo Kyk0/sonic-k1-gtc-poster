@@ -32,15 +32,4 @@
 \BRow{1044}{Bones-SEED held-out}{\nHeld}
 \BRow{1078}{100STYLE}{\nStyle}
 \BRow{1112}{PHUMA}{\nPHUMA}
-% delay weakness + real robot, very short
-\draw[rule, line width=1.5bp] (2090.67,1166) -- (3032,1166);
-\T{2090.67}{1204}{22}{ink}{\textbf{Delay was the one weakness.} After post-training, on the real K1 (lunge):}
-% \SCard[fill]{x}{accent}{big}{second line}{label}   cards 297.78 x 116, 24 gaps
-\newcommand{\SCard}[6][tile]{\fill[#1] (#2,1222) rectangle ++(297.78,116);
-  \fill[#3] (#2,1222) rectangle ++(6,116);
-  \T{#2+22}{1266}{34}{ink}{\bfseries #4}
-  \T{#2+22}{1295}{20}{before}{#5}
-  \T{#2+22}{1322}{20}{muted}{#6}}
-\SCard[alert!8]{2090.67}{alert}{{\color{alert}\nDelayForty\%} {\fontsize{20bp}{24bp}\selectfont\mdseries\color{alert}at 40\,ms}}{\nDelayTwenty\% at 20\,ms}{stays upright, v0.1}
-\SCard{2412.45}{nvgreen}{{\color{gtext}\capA\%}}{from \capB\%}{steps at a torque cap}
-\SCard{2734.23}{nvgreen}{{\color{gtext}\jLungeA\kern-2bp\textdegree}}{from \jLungeB\kern-1bp\textdegree}{leg jitter}
+% (space below the benchmarks is left empty on purpose for now)
