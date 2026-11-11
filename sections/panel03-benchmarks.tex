@@ -15,27 +15,21 @@
   \Picture{2569.33}{570}{462.67}{300}{k1_sim.png}{simulation}
   \T{2569.33}{900}{22}{ink}{\bfseries SONIC-K1, \mdseries\color{muted}same motion}
 \fi
-% key numbers
-% \Key{x}{big}{caption}
-\newcommand{\Key}[3]{\fill[tile] (#1,928) rectangle ++(462.67,116);
-  \fill[nvgreen] (#1,928) rectangle ++(8,116);
-  \T{#1+30}{988}{50}{ink}{\bfseries #2}
-  \T{#1+30}{1026}{21}{muted}{#3}}
-\Key{2090.67}{\nStyle\%}{of 100STYLE motions tracked (external set)}
-\Key{2569.33}{{\color{gtext}\nFoAfter\%}\hspace{12bp}{\fontsize{24bp}{28bp}\selectfont\mdseries\color{before}from \nFoBefore\%}}{post-trained, torque limits + 40\,ms delay}
-\T{2090.67}{1080}{21}{muted}{A clip counts if root, hands and feet stay within 0.25\,m of the reference height (SONIC’s rule).}
-% a few more numbers (4 mini stats, 235.33 wide each)
-% \Mini{index 0-3}{number}{label line 1}{label line 2}
-\newcommand{\Mini}[4]{\pgfmathsetmacro{\mx}{2090.67+#1*235.33}
-  \T{\mx}{1138}{32}{gtext}{\bfseries #2}
-  \T{\mx}{1164}{19}{muted}{#3}\T{\mx}{1186}{19}{muted}{#4}}
-\Mini{0}{\nNoFallIsaac\%}{stay upright}{in Isaac Lab}
-\Mini{1}{\nTwAfter\%}{held-out, robot limits}{+ 20\,ms delay}
-\Mini{2}{\nPhumaFoAfter\%}{PHUMA, robot limits}{+ 40\,ms delay}
-\Mini{3}{\capA\%}{steps at a torque cap}{on the real K1}
+% findings: one number, then a sentence (rows 78 tall)
+% \Find{top y}{number}{sentence}
+\newcommand{\Find}[3]{\TR{2290.67}{#1+44}{40}{gtext}{\bfseries #2}
+  \Par{2318.67}{#1+28}{714}{22}{28}{ink}{#3}}
+\Find{934}{\nStyle\%}{of 100STYLE motions tracked, an external set of walking styles it never trained on.}
+\draw[rule, line width=1.2bp] (2090.67,1012) -- (3032,1012);
+\Find{1018}{\nNoFallIsaac\%}{of held-out motions stay upright in Isaac Lab as well as in MuJoCo.}
+\draw[rule, line width=1.2bp] (2090.67,1096) -- (3032,1096);
+\Find{1102}{\nFoAfter\%}{success with the robot’s torque limits and a 40\,ms delay after post-training, up from \nFoBefore\%.}
+\draw[rule, line width=1.2bp] (2090.67,1180) -- (3032,1180);
+\Find{1186}{\capA\%}{of control steps hit a torque cap on the real K1 in a forward lunge, down from \capB\%.}
+\T{2090.67}{1290}{19}{cap}{Success: root, hands and feet within 0.25\,m of the reference height (SONIC’s rule).}
 % conclusion + future work
-\fill[tile] (2090.67,1228) rectangle ++(941.33,300);
-\fill[nvgreen] (2090.67,1228) rectangle ++(8,300);
-\T{2122.67}{1280}{30}{ink}{\bfseries Conclusion}
-\Par{2122.67}{1326}{885.33}{24}{33}{ink}{A universal humanoid motion tracker can be ported to a small humanoid on a single GPU. To our knowledge, SONIC-K1 is the only public general motion tracker for the Booster K1: it tracks almost every held-out motion at a small fraction of SONIC’s compute and runs on the real robot.}
-\T{2122.67}{1490}{22}{ink}{\textbf{Future work:} tracking error on hardware, teleoperation, video input.}
+\fill[tile] (2090.67,1318) rectangle ++(941.33,210);
+\fill[nvgreen] (2090.67,1318) rectangle ++(8,210);
+\T{2122.67}{1366}{30}{ink}{\bfseries Conclusion}
+\Par{2122.67}{1408}{885.33}{24}{33}{ink}{A universal humanoid motion tracker can be ported to a small humanoid on a single GPU. To our knowledge, SONIC-K1 is the only public one for the Booster K1.}
+\T{2122.67}{1500}{22}{ink}{\textbf{Future work:} tracking error on hardware, teleoperation, video input.}
