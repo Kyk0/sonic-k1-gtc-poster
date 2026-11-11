@@ -1,9 +1,9 @@
 # SONIC-K1 — NVIDIA GTC 2027 poster
 
-LaTeX/TikZ source for the SONIC-K1 poster. `poster.pdf` is the current build.
+LaTeX/TikZ source for the SONIC-K1 poster. `SONIC-K1_GTC2027_Poster.pdf` is the current build.
 
 ```bash
-make           # build poster.pdf (needs TeX Live: pdflatex, latexmk, tikz, qrcode, helvet)
+make           # build SONIC-K1_GTC2027_Poster.pdf (needs TeX Live: pdflatex, latexmk, tikz, qrcode, helvet)
 make preview   # render preview.png
 make watch     # rebuild on save
 ```

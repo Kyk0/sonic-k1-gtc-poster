@@ -6,7 +6,7 @@ Goal: get accepted. Reviewers are NVIDIA staff. Keep it clean, honest, readable 
 ## Build and look (do this after every change)
 
 ```bash
-make            # pdflatex via latexmk -> poster.pdf
+make            # pdflatex via latexmk -> SONIC-K1_GTC2027_Poster.pdf
 make preview    # -> preview.png ; open it and LOOK at it
 make check      # errors, overfull boxes, stray numbers
 ```
