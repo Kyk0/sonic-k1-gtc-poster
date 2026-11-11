@@ -19,6 +19,5 @@ G1 numbers: Luo et al., *SONIC*, arXiv:2511.07820, as quoted in SONIC-K1 Table I
 | Leg jitter (deg) | yawn 0.038→0.032, squat 0.202→0.140, lunge 0.597→0.365 | Table IV |
 | Torque-capped ticks (lunge) | 8.1 → 1.1% | Table IV |
 | Leg velocity power above 4 Hz (lunge) | 29 → 10% | Table IV |
-| Walks and turns without leg shaking | "in our runs" | Sec. V, Real robot |
 | Data | 142,220 → 62,427 feasible → 9,991 train / 1,985 held out | Sec. III-A |
 | Model | 25.1 M-parameter actor, 50 Hz policy, 16,384 envs | Sec. III-B |
