@@ -54,6 +54,17 @@ text running out of its panel, uneven spacing or clipped elements.
   or VLA presented as working; comparing MPJPE millimetres between robots; BeyondMimic / Any2Track numbers;
   hiding the success rule, the single seed, or that hardware data is three clips on a safety belt.
 
+## Official GTC 2027 poster rules (from the submission guidelines, non-negotiable)
+
+- Page 43 x 24 in. **1 in white margin**: design area 41 x 22 in; no image or type outside it.
+  `main.tex` scales the whole layout (drawn on the 3096 x 1728 grid) by 0.91667 into the design area.
+- **No NVIDIA branding or logos** (no NVIDIA eye, no NVIDIA logo files). Naming NVIDIA tools in text is fine.
+- Submit a print-ready, full-size PDF at 300 dpi: every raster image must be >= 300 dpi at its printed size.
+- Structure: problem/goal, application of NVIDIA technology, benchmarking method (data, hardware, tools),
+  results with charts/tables; explain acronyms; cite prior work, datasets and tools.
+- No marketing language or product promotion (no "revolutionary", "industry-leading", slogans);
+  only content cleared for public presentation. Contact: GTC_Content@nvidia.com.
+
 ## What each panel answers (GTC poster criteria)
 
 | Criterion | Where |

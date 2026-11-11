@@ -10,10 +10,14 @@
 \begin{document}
 \begin{tikzpicture}[remember picture, overlay, x=1bp, y=-1bp, shift={(current page.north west)}]
   \fill[white] (0,0) rectangle (\PW,\PH);
+  % GTC rule: 1 in (72 bp) white margin, design area 41 x 22 in. The layout below is drawn on the
+  % full 3096 x 1728 grid and scaled uniformly into the design area: 1584/1728 = 0.91667, centred.
+  \begin{scope}[shift={(129,72)}, scale=0.91667, transform shape]
   \input{sections/header}
   \input{sections/panel01-comparison}
   \input{sections/panel02-nvidia-stack}
   \input{sections/panel03-benchmarks}
   \input{sections/footer}
+  \end{scope}
 \end{tikzpicture}
 \end{document}
