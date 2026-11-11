@@ -33,9 +33,8 @@
 \BRow{1078}{100STYLE}{\nStyle}
 \BRow{1112}{PHUMA}{\nPHUMA}
 % conclusion + future work
-\fill[tile] (2090.67,1180) rectangle ++(941.33,380);
-\fill[nvgreen] (2090.67,1180) rectangle ++(8,380);
+\fill[tile] (2090.67,1180) rectangle ++(941.33,290);
+\fill[nvgreen] (2090.67,1180) rectangle ++(8,290);
 \T{2122.67}{1230}{30}{ink}{\bfseries Conclusion}
-\Par{2122.67}{1276}{885.33}{24}{33}{ink}{A universal humanoid motion tracker can be ported to a small humanoid on a single GPU, without changing its network: SONIC-K1 tracks \nHeld\% of held-out motions with \nShareCompute\ of SONIC’s compute, and a short post-training with the robot’s real limits makes it hold up under delay and run on the real K1.}
-\T{2122.67}{1438}{24}{ink}{\bfseries Future work}
-\Par{2122.67}{1472}{885.33}{22}{30}{ink}{Tracking error on the real K1 with motion capture, whole-body teleoperation with the trained teleop encoder, driving the robot from video, a larger model on all \nClipsFeasible\ feasible clips, and other small humanoids.}
+\Par{2122.67}{1276}{885.33}{24}{33}{ink}{A universal humanoid motion tracker can be ported to a small humanoid on a single GPU. To our knowledge, SONIC-K1 is the only public general motion tracker for the Booster K1: it tracks \nHeld\% of held-out motions with \nShareCompute\ of SONIC’s compute and runs on the real robot.}
+\T{2122.67}{1438}{22}{ink}{\textbf{Future work:} tracking error on hardware, teleoperation, video input.}
