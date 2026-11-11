@@ -1,0 +1,55 @@
+% Every number on the poster lives here. Panels use these macros; never type a number twice.
+% Source: Kolesnichenko et al., "SONIC-K1", arXiv:2610.39327 v3 (5 Nov 2026), unless noted.
+% "G1" values are SONIC's own reported numbers (Luo et al., arXiv:2511.07820), shown for scale.
+
+% --- headline / compute (paper Sec. III-B, Table I)
+\newcommand{\nGPUh}{\textasciitilde 145}       % 135.4 h (H100, base) + 9.2 h (RTX PRO 6000, post-training)
+\newcommand{\nBaseHours}{135.4}
+\newcommand{\nPostHours}{9.2}
+\newcommand{\nEnvs}{16,384}
+\newcommand{\nParams}{25.1\,M}
+
+% --- data (Sec. III-A)
+\newcommand{\nClipsAll}{142,220}
+\newcommand{\nClipsFeasible}{62,427}
+\newcommand{\nClipsTrain}{9,991}
+\newcommand{\nClipsHeld}{1,985}
+
+% --- benchmarks, v0.1, MuJoCo, SONIC rule (Table II)
+\newcommand{\nHeld}{97.4}
+\newcommand{\nPHUMA}{93.6}
+\newcommand{\nStyle}{99.0}
+\newcommand{\nLAFAN}{70.6}
+\newcommand{\nNoFallIsaac}{98.7}
+\newcommand{\nNoFallMuJoCo}{98.4}
+\newcommand{\nTenClips}{63.6}   % official rule, 10 training clips (Sec. IV-A)
+\newcommand{\nFullClips}{93.1}  % official rule, 9,991 training clips
+
+% --- SONIC on G1, as reported (Table II, right side; Table I)
+\newcommand{\gHeld}{98.5}
+\newcommand{\gPHUMA}{97.2}
+
+% --- robustness sweep, v0.1, no-fall, 200 clips per setting (Sec. IV-B)
+\newcommand{\nDelayTwenty}{98.5}
+\newcommand{\nDelayForty}{56.0}
+\newcommand{\nPushes}{97.0}
+
+% --- post-training, held-out, MuJoCo (Table III): before = v0.1, after = v1.0
+\newcommand{\nNomBefore}{97.5}   \newcommand{\nNomAfter}{97.4}
+\newcommand{\nTwBefore}{95.5}    \newcommand{\nTwAfter}{97.1}
+\newcommand{\nFoBefore}{76.7}    \newcommand{\nFoAfter}{96.6}
+\newcommand{\nPhumaFoBefore}{78.0} \newcommand{\nPhumaFoAfter}{91.7}
+\newcommand{\nIsaacFoBefore}{70.4} \newcommand{\nIsaacFoAfter}{89.4}
+
+% --- real robot, v0.1 vs 53k checkpoint (Table IV)
+\newcommand{\jYawnB}{0.038}  \newcommand{\jYawnA}{0.032}
+\newcommand{\jSquatB}{0.202} \newcommand{\jSquatA}{0.140}
+\newcommand{\jLungeB}{0.597} \newcommand{\jLungeA}{0.365}
+\newcommand{\capB}{8.1}      \newcommand{\capA}{1.1}
+\newcommand{\hfB}{29}        \newcommand{\hfA}{10}
+
+% --- compute comparison bar: SONIC reports 21,000 GPU-h (128 GPUs over 7 days), Luo et al. Sec. 2.1 / abstract
+\newcommand{\gGPUh}{21,000}
+\newcommand{\gGPUhHundreds}{210}   % 21,000 / 100 (TikZ math overflows above ~16,000)
+\newcommand{\nGPUhNum}{145}
+\newcommand{\nShareCompute}{under 1\%}   % 145 / 21,000 = 0.69%

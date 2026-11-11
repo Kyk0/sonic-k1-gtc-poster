@@ -1,0 +1,105 @@
+% ---------- page ----------
+\newcommand{\PW}{3096}   % page width  (bp)  = 43 in
+\newcommand{\PH}{1728}   % page height (bp)  = 24 in
+\usepackage[paperwidth=3096bp, paperheight=1728bp, margin=0pt]{geometry}
+\pagestyle{empty}
+
+% ---------- fonts (Helvetica / Courier clones, ship with every TeX Live) ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{helvet}
+\usepackage{courier}
+\renewcommand\familydefault{\sfdefault}
+\usepackage{newunicodechar}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{×}{\ensuremath{\times}}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{qrcode}
+
+% ---------- colours ----------
+\definecolor{dark}{HTML}{0D1117}    % header / footer band
+\definecolor{ink}{HTML}{14171A}     % body text
+\definecolor{muted}{HTML}{3F4752}   % secondary text
+\definecolor{cap}{HTML}{5A636E}     % captions, mono labels
+\definecolor{nvgreen}{HTML}{76B900} % accent: fills, bars, chips  (ours / after)
+\definecolor{gtext}{HTML}{3D6E00}   % green that is readable as text
+\definecolor{before}{HTML}{6B7480}  % G1 / v0.1 / before
+\definecolor{track}{HTML}{E7E9EC}   % empty part of a bar
+\definecolor{tile}{HTML}{F2F5EA}    % headline tiles, highlight boxes
+\definecolor{card}{HTML}{F4F5F7}    % neutral boxes
+\definecolor{alert}{HTML}{C2410C}   % the one failure we highlight (40 ms delay)
+\definecolor{rule}{HTML}{DADDE2}    % table rules
+\definecolor{nvfill}{HTML}{EEF5DF}  % NVIDIA boxes in the pipeline
+\definecolor{headsub}{HTML}{C9D1D9} % light text on dark
+\definecolor{headdim}{HTML}{9AA4AF} % dim text on dark
+\definecolor{codebg}{HTML}{1C232C}
+
+% ---------- grid ----------
+\newcommand{\ML}{64}            % left/right margin
+\newcommand{\CW}{2968}          % content width = PW - 2*ML
+\newcommand{\ColW}{941.33}      % panel column width = (CW - 2*72)/3
+\newcommand{\ColA}{64}          % panel column x positions
+\newcommand{\ColB}{1077.33}
+\newcommand{\ColC}{2090.67}
+\newcommand{\RowA}{372}         % panel row y positions
+\newcommand{\RowB}{1080}
+
+% ---------- text helpers ----------
+% \fs{size}: font size in bp, leading 1.25x
+\newcommand{\fs}[1]{\fontsize{#1bp}{\dimexpr #1bp*5/4\relax}\selectfont}
+% \T{x}{y}{size}{colour}{text}     one line, (x,y) = left end of the baseline
+\newcommand{\T}[5]{\node[anchor=base west, inner sep=0, outer sep=0] at ({#1},{#2}) {\fs{#3}\color{#4}#5};}
+% \TR: same, (x,y) = right end of the baseline
+\newcommand{\TR}[5]{\node[anchor=base east, inner sep=0, outer sep=0] at ({#1},{#2}) {\fs{#3}\color{#4}#5};}
+% \TC: same, centred on x
+\newcommand{\TC}[5]{\node[anchor=base, inner sep=0, outer sep=0] at ({#1},{#2}) {\fs{#3}\color{#4}#5};}
+% \Par{x}{y}{width}{size}{leading}{colour}{text}   wrapped paragraph, (x,y) = first baseline
+\newcommand{\Par}[7]{\node[anchor=base west, inner sep=0, outer sep=0] at ({#1},{#2})
+  {\color{#6}\vtop{\hsize=#3bp\raggedright\fontsize{#4bp}{#5bp}\selectfont #7}};}
+% \Lab{x}{y}{text}   small mono label under a panel heading
+\newcommand{\Lab}[3]{\T{#1}{#2}{22}{cap}{#3}}
+
+% ---------- shape helpers ----------
+% \Rect{x}{y}{w}{h}{colour}
+\newcommand{\Rect}[5]{\fill[#5] (#1,#2) rectangle ++(#3,#4);}
+% \Bar{x}{y}{full length}{value}{max}{height}{colour}  bar on a grey track
+\newcommand{\Bar}[7]{\fill[track] (#1,#2) rectangle ++(#3,#6);
+  \fill[#7] (#1,#2) rectangle ++({#4/#5*#3},#6);}
+% \Hbar{x}{y}{length}{height}{colour}  plain bar, no track
+\newcommand{\Hbar}[5]{\fill[#5] (#1,#2) rectangle ++(#3,#4);}
+% \PanelHead{x}{y}{number}{title}
+\newcommand{\PanelHead}[4]{%
+  \fill[nvgreen] (#1,#2) rectangle ++(56,48);
+  \TC{#1+28}{#2+34}{28}{dark}{\bfseries #3}
+  \T{#1+74}{#2+38}{38}{ink}{\bfseries #4}}
+% \Legend{x}{y}{before label}{after label}
+\newcommand{\Legend}[4]{%
+  \fill[before] (#1,#2-16) rectangle ++(18,18);
+  \node[anchor=base west, inner sep=0] (lg) at (#1+26,#2) {\fs{20}\color{ink}#3};
+  \fill[nvgreen] ([xshift=22bp]lg.base east) ++(0,-16) rectangle ++(18,18);
+  \node[anchor=base west, inner sep=0] at ([xshift=48bp]lg.base east) {\fs{20}\color{gtext}\bfseries #4};}
+
+% ---------- images with automatic placeholders ----------
+% \Picture{x}{y}{w}{h}{file in figures/}{placeholder label}
+% Drop the file into figures/ and rebuild: the placeholder is replaced, cropped to fill the box.
+\newcommand{\Picture}[6]{%
+  \IfFileExists{figures/#5}{%
+    \begin{scope}
+      \clip (#1,#2) rectangle ++(#3,#4);
+      \node[inner sep=0] at (#1+#3/2,#2+#4/2) {\includegraphics[height=#4bp]{figures/#5}};
+    \end{scope}}{%
+    \fill[card] (#1,#2) rectangle ++(#3,#4);
+    \node[align=center, inner sep=0] at (#1+#3/2,#2+#4/2) {\fs{20}\color{cap}#6};}}
+% \Logo{x}{y}{w}{h}{file}{label}  logo (light, for the dark header) fit inside the box
+\newcommand{\Logo}[6]{%
+  \IfFileExists{figures/#5}{%
+    \node[inner sep=0] at (#1+#3/2,#2+#4/2) {\includegraphics[width=#3bp,height=#4bp,keepaspectratio]{figures/#5}};}{%
+    \draw[headdim!60!dark, line width=2bp, dash pattern=on 8bp off 6bp] (#1,#2) rectangle ++(#3,#4);
+    \node[inner sep=0] at (#1+#3/2,#2+#4/2) {\fs{22}\color{headdim}#6};}}

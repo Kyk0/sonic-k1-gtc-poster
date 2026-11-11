@@ -1,0 +1,35 @@
+% ---------- 03  sim and robot, key numbers, benchmarks, robustness, real-robot stability (column C, full height: y 372-1560) ----------
+% Real-robot photo: figures/real_k1.jpg (placeholder until it exists).
+% Right picture: the real robot if figures/real_k1.jpg exists, else the K1 in simulation. \ShowRealKOnefalse forces simulation.
+\newif\ifShowRealKOne \ShowRealKOnetrue
+\PanelHead{\ColC}{\RowA}{03}{Tested in simulation and on the real K1}
+\Par{2090.67}{460}{941.33}{24}{32}{ink}{Every test starts from a human motion the policy has never seen, stored as a SOMA body (left). We retarget it to the K1 and play it in MuJoCo, a different physics engine from training, and then on the real robot (right).}
+\Picture{2090.67}{580}{462.67}{238}{human_reference.png}{human}
+\T{2090.67}{846}{22}{ink}{\bfseries Human reference, \mdseries\color{muted}SOMA body}
+\ifShowRealKOne
+  \IfFileExists{figures/real_k1.jpg}{\Picture{2569.33}{580}{462.67}{238}{real_k1.jpg}{robot photo}%
+    \T{2569.33}{846}{22}{ink}{\bfseries Real Booster K1, \mdseries\color{muted}safety-belt trial}}{%
+    \Picture{2569.33}{580}{462.67}{238}{k1_sim.png}{simulation}%
+    \T{2569.33}{846}{22}{ink}{\bfseries SONIC-K1, \mdseries\color{muted}same motion}}
+\else
+  \Picture{2569.33}{580}{462.67}{238}{k1_sim.png}{simulation}
+  \T{2569.33}{846}{22}{ink}{\bfseries SONIC-K1, \mdseries\color{muted}same motion}
+\fi
+% key numbers
+% \Key{x}{big}{caption}
+\newcommand{\Key}[3]{\fill[tile] (#1,870) rectangle ++(462.67,116);
+  \fill[nvgreen] (#1,870) rectangle ++(8,116);
+  \T{#1+30}{930}{50}{ink}{\bfseries #2}
+  \T{#1+30}{968}{21}{muted}{#3}}
+\Key{2090.67}{\nHeld\%}{of \nClipsHeld\ held-out motions tracked}
+\Key{2569.33}{{\color{gtext}\nFoAfter\%}\hspace{12bp}{\fontsize{24bp}{28bp}\selectfont\mdseries\color{before}from \nFoBefore\%}}{post-trained, torque limits + 40\,ms delay}
+% benchmarks
+\Par{2090.67}{1026}{941.33}{22}{29}{ink}{A clip counts if root, hands and feet stay within 0.25\,m of the reference height (SONIC’s rule).}
+% \BRow{bar top y}{label}{value}   track from x 2370.67, 550 long
+\newcommand{\BRow}[3]{\T{2090.67}{#1+20}{23}{ink}{#2}
+  \Bar{2370.67}{#1}{550}{#3}{100}{23}{nvgreen}
+  \T{2936.67}{#1+21}{24}{ink}{\bfseries #3}}
+\BRow{1044}{Bones-SEED held-out}{\nHeld}
+\BRow{1078}{100STYLE}{\nStyle}
+\BRow{1112}{PHUMA}{\nPHUMA}
+% (space below the benchmarks is left empty on purpose for now)

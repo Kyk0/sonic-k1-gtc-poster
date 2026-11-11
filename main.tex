@@ -1,0 +1,19 @@
+% SONIC-K1 poster for NVIDIA GTC 2027.  Build: make  (or: latexmk -pdf main.tex)
+% Layout: every element is placed on a TikZ canvas in big points (bp), origin at the
+% top-left corner, y growing DOWNWARDS. See CLAUDE.md for the grid and the rules.
+\RequirePackage{fix-cm}
+\documentclass{article}
+\input{style}
+\input{numbers}
+\input{logos}
+
+\begin{document}
+\begin{tikzpicture}[remember picture, overlay, x=1bp, y=-1bp, shift={(current page.north west)}]
+  \fill[white] (0,0) rectangle (\PW,\PH);
+  \input{sections/header}
+  \input{sections/panel01-comparison}
+  \input{sections/panel02-nvidia-stack}
+  \input{sections/panel03-benchmarks}
+  \input{sections/footer}
+\end{tikzpicture}
+\end{document}

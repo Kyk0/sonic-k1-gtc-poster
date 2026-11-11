@@ -1,0 +1,36 @@
+% ---------- 01  idea, G1 comparison, contributions, training time (column A, full height: y 372-1560) ----------
+\PanelHead{\ColA}{\RowA}{01}{The idea: SONIC for a small humanoid}
+\Par{64}{460}{941.33}{25}{34}{ink}{NVIDIA SONIC showed that a single policy can track almost any human motion, but it was built for the full-size Unitree G1 and trained on 128 GPUs. We asked whether a lab with one GPU can have the same kind of tracker on a small robot. So we ported SONIC to the Booster K1, trained it from scratch on one GPU, fixed it for the real robot, and released everything.}
+% comparison table: column right edges G1 at x 664, K1 at x 1005.33
+\TR{664}{666}{25}{before}{\bfseries SONIC · Unitree G1}
+\TR{664}{694}{21}{cap}{as reported}
+\TR{1005.33}{666}{25}{gtext}{\bfseries SONIC-K1 · Booster K1}
+\TR{1005.33}{694}{21}{cap}{ours}
+\draw[ink, line width=2bp] (64,710) -- (1005.33,710);
+% \CRow{baseline y}{label}{G1}{K1}
+\newcommand{\CRow}[4]{\T{64}{#1}{30}{ink}{#2}\TR{664}{#1}{30}{ink}{#3}\TR{1005.33}{#1}{30}{gtext}{\bfseries #4}}
+\CRow{756}{Held-out success}{\gHeld\%}{\nHeld\%}
+\draw[rule, line width=1.2bp] (64,774) -- (1005.33,774);
+\CRow{818}{PHUMA success}{\gPHUMA\%}{\nPHUMA\%}
+\draw[rule, line width=1.2bp] (64,836) -- (1005.33,836);
+\CRow{880}{Training data}{700\,h mocap}{\nClipsTrain\ clips}
+\draw[ink, line width=2bp] (64,898) -- (1005.33,898);
+\Par{64}{930}{941.33}{21}{27}{cap}{G1 values as reported by SONIC; robot, data and test clips differ.}
+% contributions
+\T{64}{1004}{28}{ink}{\bfseries What we contribute}
+% \Item{baseline y}{text}
+\newcommand{\Item}[2]{\fill[nvgreen] (64,#1-17) rectangle ++(13,13);\Par{98}{#1}{907.33}{24}{32}{ink}{#2}}
+\Item{1050}{The first open-weights general motion tracker for the Booster K1, to our knowledge.}
+\Item{1094}{A full SONIC training run on one GPU, \nShareCompute\ of SONIC’s reported compute.}
+\Item{1138}{Tested in Isaac Lab, in MuJoCo and on the real K1, where a short post-training with the robot’s torque limits and delay removed the leg shaking in our runs.}
+\Item{1214}{Code, weights, robot app and evaluation tools, all public.}
+% training time, drawn to scale
+\draw[rule, line width=1.5bp] (64,1258) -- (1005.33,1258);
+\T{64}{1304}{28}{ink}{\bfseries Training time, drawn to scale}
+\T{64}{1360}{25}{before}{\bfseries SONIC}
+\fill[before] (250,1332) rectangle ++(755.33,38);
+\TR{991}{1360}{23}{white}{\bfseries 128 GPUs × 7 days \ = \ \gGPUh\ GPU-h}
+\T{64}{1420}{25}{gtext}{\bfseries SONIC-K1}
+\fill[nvgreen] (250,1392) rectangle ++({max(\nGPUhNum/\gGPUhHundreds*7.5533,7)},38);
+\T{272}{1420}{23}{gtext}{\bfseries 1 GPU \ = \ \nGPUh\ GPU-h}
+\Par{64}{1480}{941.33}{24}{32}{ink}{\nBaseHours\,h of base training on one NVIDIA H100, plus \nPostHours\,h of post-training on one RTX PRO 6000.}
