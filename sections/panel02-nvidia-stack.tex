@@ -25,9 +25,9 @@ We retargeted \nClipsAll\ Bones-SEED human clips to the K1 with UMR and kept the
 \T{1077.33}{1536}{22}{ink}{\textbf{Post-trained:} a short extra run with the K1’s real torque limits and a random delay.}
 % ----- aside: NVIDIA tech we used (x 1729-2018.66) -----
 \draw[rule, line width=1.5bp] (1729,856) -- (1729,1446);
-\T{1753}{884}{24}{ink}{\bfseries NVIDIA tools we used}
+\T{1753}{884}{24}{ink}{\bfseries Built with NVIDIA}
 % \BW{baseline y}{name}{what for}
-\newcommand{\BW}[3]{\fill[nvgreen] (1753,#1-16) rectangle ++(14,14);\T{1781}{#1}{23}{ink}{\bfseries #2}\T{1781}{#1+27}{20}{muted}{#3}}
+\newcommand{\BW}[3]{\NVEye{1753}{#1-19}{30}\T{1814}{#1}{23}{ink}{\bfseries #2}\T{1814}{#1+27}{20}{muted}{#3}}
 \BW{944}{NVIDIA SONIC}{network and recipe}
 \BW{1024}{GR00T-WBC}{training code}
 \BW{1104}{Isaac Lab}{RL training}

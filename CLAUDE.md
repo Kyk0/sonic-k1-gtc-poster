@@ -58,7 +58,8 @@ text running out of its panel, uneven spacing or clipped elements.
 
 - Page 43 x 24 in. **1 in white margin**: design area 41 x 22 in; no image or type outside it.
   `main.tex` scales the whole layout (drawn on the 3096 x 1728 grid) by 0.91667 into the design area.
-- **No NVIDIA branding or logos** (no NVIDIA eye, no NVIDIA logo files). Naming NVIDIA tools in text is fine.
+- **No NVIDIA branding or logos** per the rules. Exception kept on the author's explicit request (2026-11-11):
+  the small NVIDIA eye marks in panel 02's "Built with NVIDIA" list. Do not add any other NVIDIA branding.
 - Submit a print-ready, full-size PDF at 300 dpi: every raster image must be >= 300 dpi at its printed size.
 - Structure: problem/goal, application of NVIDIA technology, benchmarking method (data, hardware, tools),
   results with charts/tables; explain acronyms; cite prior work, datasets and tools.
