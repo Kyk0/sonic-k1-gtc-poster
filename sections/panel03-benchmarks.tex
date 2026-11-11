@@ -32,4 +32,8 @@
 \BRow{1044}{Bones-SEED held-out}{\nHeld}
 \BRow{1078}{100STYLE}{\nStyle}
 \BRow{1112}{PHUMA}{\nPHUMA}
-% (space below the benchmarks is left empty on purpose for now)
+% conclusion
+\fill[tile] (2090.67,1180) rectangle ++(941.33,300);
+\fill[nvgreen] (2090.67,1180) rectangle ++(8,300);
+\T{2122.67}{1232}{30}{ink}{\bfseries Conclusion}
+\Par{2122.67}{1280}{885.33}{25}{35}{ink}{One GPU is enough. SONIC’s recipe carries over to a small humanoid without changing the network: SONIC-K1 tracks \nHeld\% of held-out motions with \nShareCompute\ of SONIC’s compute. A short post-training with the robot’s real limits makes it hold up under delay and run on the real K1 without the leg shaking in our runs. Code and weights are open, so other labs can start from here.}
